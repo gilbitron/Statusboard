@@ -14,8 +14,8 @@ class AuthController {
 		}
 
 		$provider = new \League\OAuth2\Client\Provider\GenericProvider([
-			'clientId'                => '2467431002.8809993380',
-			'clientSecret'            => 'df463196bdab9b5d01d0177ed54091fb',
+			'clientId'                => env('SLACK_CLIENT_ID'),
+			'clientSecret'            => env('SLACK_CLIENT_SECRET'),
 			'redirectUri'             => url('auth/slack'),
 			'urlAuthorize'            => 'https://slack.com/oauth/authorize',
 			'urlAccessToken'          => 'https://slack.com/api/oauth.access',
@@ -58,8 +58,8 @@ class AuthController {
 		}
 
 		$provider = new \League\OAuth2\Client\Provider\Github([
-			'clientId'          => 'a0ff8b1e9006f7499bca',
-			'clientSecret'      => 'c36331323109f880a1cd1466e5639303cab9d71d',
+			'clientId'          => env('GITHUB_CLIENT_ID'),
+			'clientSecret'      => env('GITHUB_CLIENT_SECRET'),
 			'redirectUri'       => url('auth/github'),
 		]);
 
