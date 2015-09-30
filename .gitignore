@@ -1,0 +1,6 @@
+/.idea
+/vendor
+/DB Statusboard.app
+/public/js/react/.module-cache
+.env
+composer.lock
