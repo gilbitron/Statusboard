@@ -4,7 +4,7 @@
 
 1. Download/clone and run `composer install`
 2. Rename `.env.example` to `.env` and fill in the `HELPSCOUT_API_KEY`
-3. Setup and run as a website (e.g. using MAMP)
+3. Setup and run as a website (e.g. using MAMP) using the address `db-statusboard.dev` (this address is required for oauth callbacks to work)
 
 ### Usage
 
