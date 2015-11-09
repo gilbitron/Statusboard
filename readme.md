@@ -1,5 +1,9 @@
 # Statusboard
 
+### Requirements
+
+* PHP >= 5.5.9
+
 ### Install
 
 1. Download/clone and run `composer install`
