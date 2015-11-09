@@ -10,6 +10,13 @@ use Frlnc\Slack\Core\Commander;
 
 class Slack {
 
+	/**
+	 * Query the Slack API
+	 *
+	 * @param string $command
+	 * @param array $params
+	 * @return OauthTokenError|mixed
+	 */
 	public final static function execute($command, $params = [])
 	{
 		if (!Cache::has('slack_token')) {

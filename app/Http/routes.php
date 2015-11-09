@@ -17,5 +17,5 @@ $app->get('auth/slack', 'AuthController@slack');
 $app->get('auth/github', 'AuthController@github');
 
 $app->get('api/slack-users', 'ApiController@getSlackUsers');
-$app->get('api/github-notifications', 'ApiController@getGithubNotifications');
 $app->get('api/helpscout-mailboxes', 'ApiController@getHelpscoutMailboxes');
+$app->get('api/github-notifications', 'ApiController@getGithubNotifications');

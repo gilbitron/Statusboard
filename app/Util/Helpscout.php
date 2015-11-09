@@ -4,6 +4,11 @@ namespace App\Util;
 
 class Helpscout {
 
+	/**
+	 * Return Help Scout mailboxes
+	 *
+	 * @return array|bool
+	 */
 	public final static function mailboxes()
 	{
 		try {
@@ -25,7 +30,13 @@ class Helpscout {
 		return false;
 	}
 
-	public final static function get($endpoint)
+	/**
+	 * Query a Help Scout API endpoint
+	 *
+	 * @param string $endpoint
+	 * @return mixed
+	 */
+	protected final static function get($endpoint)
 	{
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, 'https://api.helpscout.net/v1/' . $endpoint);

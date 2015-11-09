@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use Cache;
 use Illuminate\Http\Request;
+use \League\OAuth2\Client\Provider;
+use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 
 class AuthController {
 
+	/**
+	 * Authenticate with Slack and cache the access token
+	 *
+	 * @param Request $request
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
 	public function slack(Request $request)
 	{
 		if (Cache::has('slack_token')) {
 			return redirect('/');
 		}
 
-		$provider = new \League\OAuth2\Client\Provider\GenericProvider([
+		$provider = new Provider\GenericProvider([
 			'clientId'                => env('SLACK_CLIENT_ID'),
 			'clientSecret'            => env('SLACK_CLIENT_SECRET'),
 			'redirectUri'             => url('auth/slack'),
@@ -43,7 +51,7 @@ class AuthController {
 
 				Cache::put('slack_token', $token, 60 * 24 * 30);
 			}
-			catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
+			catch (IdentityProviderException $e) {
 				exit($e->getMessage());
 			}
 		}
@@ -51,13 +59,19 @@ class AuthController {
 		return redirect('/');
 	}
 
+	/**
+	 * Authenticate with GitHub and cache the access token
+	 *
+	 * @param Request $request
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
 	public function github(Request $request)
 	{
 		if (Cache::has('github_token')) {
 			return redirect('/');
 		}
 
-		$provider = new \League\OAuth2\Client\Provider\Github([
+		$provider = new Provider\Github([
 			'clientId'          => env('GITHUB_CLIENT_ID'),
 			'clientSecret'      => env('GITHUB_CLIENT_SECRET'),
 			'redirectUri'       => url('auth/github'),
@@ -86,7 +100,7 @@ class AuthController {
 
 				Cache::put('github_token', $token, 60 * 24 * 30);
 			}
-			catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
+			catch (IdentityProviderException $e) {
 				exit($e->getMessage());
 			}
 		}

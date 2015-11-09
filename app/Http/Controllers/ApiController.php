@@ -7,6 +7,13 @@ use App\Util;
 
 class ApiController {
 
+	/**
+	 * Return a list of Slack users with their "presence" status
+	 *
+	 * GET /api/slack-users
+	 *
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
 	public function getSlackUsers()
 	{
 		if (Cache::has('slack_users')) {
@@ -31,20 +38,13 @@ class ApiController {
 		return response()->json($slackUsers);
 	}
 
-	public function getGithubNotifications()
-	{
-		if (Cache::has('github_notifications')) {
-			return response()->json(Cache::get('github_notifications'));
-		}
-
-		$notifications = $this->handleAuthError(Util\Github::notifications());
-		if ($notifications) {
-			Cache::put('github_notifications', $notifications, 5);
-		}
-
-		return response()->json($notifications);
-	}
-
+	/**
+	 * Return Help Scout mailboxes
+	 *
+	 * GET /api/helpscout-mailboxes
+	 *
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
 	public function getHelpscoutMailboxes()
 	{
 		if (Cache::has('helpscout_mailboxes')) {
@@ -59,6 +59,34 @@ class ApiController {
 		return response()->json($mailboxes);
 	}
 
+	/**
+	 * Return recent GitHub notifications
+	 *
+	 * GET /api/github-notifications
+	 *
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function getGithubNotifications()
+	{
+		if (Cache::has('github_notifications')) {
+			return response()->json(Cache::get('github_notifications'));
+		}
+
+		$notifications = $this->handleAuthError(Util\Github::notifications());
+		if ($notifications) {
+			Cache::put('github_notifications', $notifications, 5);
+		}
+
+		return response()->json($notifications);
+	}
+
+	/**
+	 * If there is an authentication error end the response.
+	 * Otherwise return the data.
+	 *
+	 * @param \App\Util\OauthTokenError|mixed $data
+	 * @return mixed
+	 */
 	protected function handleAuthError($data)
 	{
 		if (is_a($data, 'App\Util\OauthTokenError')) {

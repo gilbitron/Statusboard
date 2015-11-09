@@ -8,6 +8,11 @@ use Github\Client as GithubClient;
 
 class Github {
 
+	/**
+	 * Return GitHub notifications
+	 *
+	 * @return OauthTokenError|mixed
+	 */
 	public final static function notifications()
 	{
 		if (!Cache::has('github_token')) {
