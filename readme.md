@@ -1,5 +1,7 @@
 # Statusboard
 
+![Statusboard Preview](https://raw.githubusercontent.com/gilbitron/Statusboard/master/preview.png)
+
 ### Requirements
 
 * PHP >= 5.5.9
