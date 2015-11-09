@@ -1,6 +1,6 @@
 (function(App) {
 
-	React.render(
+	ReactDOM.render(
 		(
 			<div>
 				<App.Views.Slack url="/api/slack-users" pollInterval={60000}/>
