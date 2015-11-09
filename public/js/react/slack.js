@@ -34,7 +34,7 @@
 		render: function() {
 			var loading;
 			if (this.state.loading) {
-				loading = <div className="box-loading"><img src="/images/loading.svg" /></div>
+				loading = <div className="box-loading"><i className="fa fa-spinner fa-spin"></i></div>
 			}
 
 			if (this.state.error) {

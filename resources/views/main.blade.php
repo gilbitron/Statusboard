@@ -8,6 +8,7 @@
 
 	<link rel="stylesheet" href="{{ url('bower_components/normalize.css/normalize.css') }}">
 	<link rel="stylesheet" href="{{ url('css/style.css') }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.2/react-dom.min.js"></script>

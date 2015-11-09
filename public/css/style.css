@@ -5,6 +5,15 @@ body {
 	padding: 40px;
 }
 
+a, a:visited {
+	color: #8c949f;
+	text-decoration: none;
+}
+a:hover, a:active {
+	color: #8c949f;
+	text-decoration: underline;
+}
+
 .box {
 	background: #1a2836;
 	padding: 30px;
@@ -17,10 +26,10 @@ body {
 	position: absolute;
 	top: 10px;
 	right: 10px;
-}
-.box-loading img {
 	width: 20px;
-	height: auto;
+	height: 20px;
+	font-size: 18px;
+	color: #2dc2d7;
 }
 
 .slack-timeline {
@@ -148,8 +157,16 @@ body {
 .slack-user-info .slack-user-local-time { color: #5a6b85; }
 
 .github-notifications { width: 100%; }
-.github-notifications td { padding: 2px 15px; }
-.github-notifications td.type { padding-left: 0; }
+.github-notifications td {
+	padding: 2px 15px;
+	height: 20px;
+	line-height: 20px;
+}
+.github-notifications td.type {
+	padding-left: 0;
+	width: 20px;
+}
+.github-notifications td.type-pullrequest { font-size: 20px; }
 .github-notifications td.time {
 	padding-right: 0;
 	white-space: nowrap;

@@ -34,7 +34,7 @@
 		render: function() {
 			var loading;
 			if (this.state.loading) {
-				loading = <div className="box-loading"><img src="/images/loading.svg" /></div>
+				loading = <div className="box-loading"><i className="fa fa-spinner fa-spin"></i></div>
 			}
 
 			if (this.state.error) {
@@ -47,10 +47,15 @@
 			}
 
 			var notifications = this.state.data.map(function(notification) {
+				var typeIcon = <i className="fa fa-exclamation-circle"></i>
+				if(notification.subject.type == 'PullRequest') {
+					typeIcon = <i className="fa fa-code-fork"></i>
+				}
+
 				return (
 					<tr key={notification.id}>
-						<td className="type">{notification.subject.type}</td>
-						<td className="name">{notification.repository.full_name}</td>
+						<td className={'type type-' + notification.subject.type.toLowerCase()}>{typeIcon}</td>
+						<td className="name"><a href={notification.repository.html_url} target="_blank">{notification.repository.full_name}</a></td>
 						<td className="title">{notification.subject.title}</td>
 						<td className="time">{moment(notification.updated_at).fromNow()}</td>
 					</tr>
