@@ -114,6 +114,7 @@ a:hover, a:active {
 
 .slack-hour.total-2 .slack-user,
 .slack-hour.total-3 .slack-user,
+.slack-hour.total-4 .slack-user,
 .slack-hour.total-multiple .slack-user{
 	float: left;
 	width: 50%;
