@@ -32,7 +32,7 @@ class ApiController {
 				$slackUsers[] = $user;
 			}
 
-			Cache::put('slack_users', $slackUsers, 5);
+			Cache::put('slack_users', $slackUsers, 2);
 		}
 
 		return response()->json($slackUsers);
@@ -53,7 +53,7 @@ class ApiController {
 
 		$mailboxes = Util\Helpscout::mailboxes();
 		if ($mailboxes) {
-			Cache::put('helpscout_mailboxes', $mailboxes, 5);
+			Cache::put('helpscout_mailboxes', $mailboxes, 1);
 		}
 
 		return response()->json($mailboxes);
