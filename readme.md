@@ -11,7 +11,9 @@
 1. Download/clone and run `composer install`
 2. Setup and run as a website (e.g. using MAMP)
 3. Create a [Slack app](https://api.slack.com/applications/new) and a [GitHub app](https://github.com/settings/applications/new). Set the redirect URI's to whatever address you setup in step 2
-2. Rename `.env.example` to `.env` and fill in the required information
+4. Rename `.env.example` to `.env` and fill in the required information
+
+Note: The Slack app needs the `identify` and `users:read` scopes.
 
 ### Usage
 

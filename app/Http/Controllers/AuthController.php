@@ -28,6 +28,7 @@ class AuthController {
 			'urlAuthorize'            => 'https://slack.com/oauth/authorize',
 			'urlAccessToken'          => 'https://slack.com/api/oauth.access',
 			'urlResourceOwnerDetails' => '',
+			'scopes'                  => ['identify', 'users:read'],
 		]);
 
 		if (!$request->get('code')) {
