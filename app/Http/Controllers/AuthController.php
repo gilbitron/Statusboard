@@ -73,14 +73,14 @@ class AuthController {
 		}
 
 		$provider = new Provider\Github([
-			'clientId'          => env('GITHUB_CLIENT_ID'),
-			'clientSecret'      => env('GITHUB_CLIENT_SECRET'),
-			'redirectUri'       => url('auth/github'),
+			'clientId'     => env('GITHUB_CLIENT_ID'),
+			'clientSecret' => env('GITHUB_CLIENT_SECRET'),
+			'redirectUri'  => url('auth/github'),
 		]);
 
 		if (!$request->get('code')) {
 			$authorizationUrl = $provider->getAuthorizationUrl([
-				'scope' => ['notifications']
+				'scope' => ['notifications'],
 			]);
 
 			$request->session()->put('oauth2state', $provider->getState());
