@@ -50,11 +50,13 @@
 			for (var i = 0; i < 24; i++) {
 				timeline[i] = [];
 			}
-			this.state.data.map(function(user) {
-				if (!user.tz_offset) user.tz_offset = 0;
-				user.local_time = App.Util.calcLocalTime(user.tz_offset).getHours();
-				timeline[user.local_time].push(user);
-			});
+			if (typeof this.state.data.map !== 'undefined') {
+				this.state.data.map(function(user) {
+					if (!user.tz_offset) user.tz_offset = 0;
+					user.local_time = App.Util.calcLocalTime(user.tz_offset).getHours();
+					timeline[user.local_time].push(user);
+				});
+			}
 
 			var hours = timeline.map(function(users, hour){
 				return (

@@ -46,15 +46,18 @@
 				);
 			}
 
-			var mailboxes = this.state.data.map(function(mailbox) {
-				return (
-					<tr key={mailbox.id}>
-						<td className="name">{mailbox.name}</td>
-						<td className="unassigned">{mailbox.folders[0].activeCount ? mailbox.folders[0].activeCount : '\u2014'}</td>
-						<td className="mine">{mailbox.folders[1].activeCount ? mailbox.folders[1].activeCount : '\u2014'}</td>
-					</tr>
-				);
-			});
+			var mailboxes = null;
+			if (typeof this.state.data.map !== 'undefined') {
+				mailboxes = this.state.data.map(function(mailbox) {
+					return (
+						<tr key={mailbox.id}>
+							<td className="name">{mailbox.name}</td>
+							<td className="unassigned">{mailbox.folders[0].activeCount ? mailbox.folders[0].activeCount : '\u2014'}</td>
+							<td className="mine">{mailbox.folders[1].activeCount ? mailbox.folders[1].activeCount : '\u2014'}</td>
+						</tr>
+					);
+				});
+			}
 			return (
 				<div className="helpscout-status box">
 					{loading}

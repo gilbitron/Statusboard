@@ -46,21 +46,26 @@
 				);
 			}
 
-			var notifications = this.state.data.map(function(notification) {
-				var typeIcon = <i className="fa fa-exclamation-circle"></i>
-				if(notification.subject.type == 'PullRequest') {
-					typeIcon = <i className="fa fa-code-fork"></i>
-				}
+			var notifications = null;
+			if (typeof this.state.data.map !== 'undefined') {
+				notifications = this.state.data.map(function(notification) {
+					var typeIcon = <i className="fa fa-exclamation-circle"></i>
+					if (notification.subject.type == 'PullRequest') {
+						typeIcon = <i className="fa fa-code-fork"></i>
+					}
 
-				return (
-					<tr key={notification.id}>
-						<td className={'type type-' + notification.subject.type.toLowerCase()}>{typeIcon}</td>
-						<td className="name"><a href={notification.repository.html_url} target="_blank">{notification.repository.full_name}</a></td>
-						<td className="title">{notification.subject.title}</td>
-						<td className="time">{moment(notification.updated_at).fromNow()}</td>
-					</tr>
-				);
-			});
+					return (
+						<tr key={notification.id}>
+							<td className={'type type-' + notification.subject.type.toLowerCase()}>{typeIcon}</td>
+							<td className="name">
+								<a href={notification.repository.html_url} target="_blank">{notification.repository.full_name}</a>
+							</td>
+							<td className="title">{notification.subject.title}</td>
+							<td className="time">{moment(notification.updated_at).fromNow()}</td>
+						</tr>
+					);
+				});
+			}
 			return (
 				<div className="github-status box">
 					{loading}
