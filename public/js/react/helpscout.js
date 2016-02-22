@@ -12,7 +12,6 @@
 						this.setState({error: data.error, loading: false});
 					} else {
 						this.setState({data: data, loading: false});
-						setTimeout(this.loadMailboxesFromServer, this.props.pollInterval);
 					}
 				}.bind(this),
 				error: function(xhr, status, err) {
@@ -30,6 +29,7 @@
 		},
 		componentDidMount: function() {
 			this.loadMailboxesFromServer();
+			setInterval(this.loadMailboxesFromServer, this.props.pollInterval);
 		},
 		render: function() {
 			var loading;

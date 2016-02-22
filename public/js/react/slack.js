@@ -12,7 +12,6 @@
 						this.setState({error: data.error, loading: false});
 					} else {
 						this.setState({data: data, loading: false});
-						setTimeout(this.loadUsersFromServer, this.props.pollInterval);
 					}
 				}.bind(this),
 				error: function(xhr, status, err) {
@@ -30,6 +29,7 @@
 		},
 		componentDidMount: function() {
 			this.loadUsersFromServer();
+			setInterval(this.loadUsersFromServer, this.props.pollInterval);
 		},
 		render: function() {
 			var loading;
