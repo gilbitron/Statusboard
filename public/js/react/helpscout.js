@@ -17,6 +17,10 @@
 				error: function(xhr, status, err) {
 					this.setState({loading: false});
 					console.error(this.props.url, status, err.toString());
+				}.bind(this),
+				complete: function() {
+					this.setState({loading: false});
+					setTimeout(this.loadMailboxesFromServer, this.props.pollInterval);
 				}.bind(this)
 			});
 		},
@@ -29,7 +33,6 @@
 		},
 		componentDidMount: function() {
 			this.loadMailboxesFromServer();
-			setInterval(this.loadMailboxesFromServer, this.props.pollInterval);
 		},
 		render: function() {
 			var loading;
