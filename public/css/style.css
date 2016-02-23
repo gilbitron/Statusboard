@@ -31,6 +31,15 @@ a:hover, a:active {
 	font-size: 18px;
 	color: #2dc2d7;
 }
+.box-ajax-error {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 20px;
+	height: 20px;
+	font-size: 18px;
+	color: #ce2426;
+}
 
 .slack-timeline {
 	list-style: none;

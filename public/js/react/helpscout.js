@@ -9,13 +9,13 @@
 				cache: false,
 				success: function(data) {
 					if (typeof data.error !== 'undefined') {
-						this.setState({error: data.error, loading: false});
+						this.setState({error: data.error});
 					} else {
-						this.setState({data: data, loading: false});
+						this.setState({data: data, ajaxError: null});
 					}
 				}.bind(this),
 				error: function(xhr, status, err) {
-					this.setState({loading: false});
+					this.setState({ajaxError: err.toString()});
 					console.error(this.props.url, status, err.toString());
 				}.bind(this),
 				complete: function() {
@@ -28,6 +28,7 @@
 			return {
 				loading: false,
 				error: null,
+				ajaxError: null,
 				data: []
 			};
 		},
@@ -38,6 +39,9 @@
 			var loading;
 			if (this.state.loading) {
 				loading = <div className="box-loading"><i className="fa fa-spinner fa-spin"></i></div>
+			}
+			if (this.state.ajaxError) {
+				loading = <div className="box-ajax-error"><i className="fa fa-exclamation-triangle" title={this.state.ajaxError}></i></div>
 			}
 
 			if (this.state.error) {
