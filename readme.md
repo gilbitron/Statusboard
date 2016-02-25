@@ -9,7 +9,7 @@
 ### Install
 
 1. Download/clone and run `composer install`
-2. Setup and run as a website (e.g. using MAMP)
+2. Setup and run as a website (Either run `docker-compose up -d` to run as a Docker container or setup manually using something like MAMP)
 3. Create a [Slack app](https://api.slack.com/applications/new) and a [GitHub app](https://github.com/settings/applications/new). Set the redirect URI's to whatever address you setup in step 2
 4. Rename `.env.example` to `.env` and fill in the required information
 
